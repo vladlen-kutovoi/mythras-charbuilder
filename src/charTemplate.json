@@ -1,0 +1,67 @@
+{
+  "characteristics": {
+    "strength": {
+      "name": "Strength",
+      "shortName": "STR",
+      "description": "STR represents physical strength: how much one can lift, how hard one can hit, and so on. STR is a component of the Damage Modifier. If a character is reduced to zero STR they lack the ability to move or lift objects.",
+      "value": 0,
+      "increase": 0,
+      "min": 3,
+      "max": 18
+    },
+    "constitution": {
+      "name": "Constitution",
+      "shortName": "CON",
+      "description": "CON is measure of health and hardiness. CON is a component in determining Hit Points and Healing Rate. If CON falls to zero for any reason the character dies.",
+      "value": 0,
+      "increase": 0,
+      "min": 3,
+      "max": 18
+    },
+    "size": {
+      "name": "Size",
+      "shortName": "SIZ",
+      "description": "SIZ measures mass and helps indicate Height and Weight. SIZ is used to help figure Hit Points, as larger, heavier creatures tend to have greater endurance against damage. SIZ can also be used to determine a character's Damage Modifier, since mass helps to increase the force of a blow.",
+      "value": 0,
+      "increase": 0,
+      "min": 8,
+      "max": 18
+    },
+    "dexterity": {
+      "name": "Dexterity",
+      "shortName": "DEX",
+      "description": "Agility, balance, and reflexes are measured by DEX. It is an important aspect of Action Points and Initiative. If a character is reduced to zero DEX, they suffer functional paralysis.",
+      "value": 0,
+      "increase": 0,
+      "min": 3,
+      "max": 18
+    },
+    "intelligence": {
+      "name": "Intelligence",
+      "shortName": "INT",
+      "description": "INT is measurement of cognitive ability. Those with a lower INT score are not necessarily stupid, but they are likely to be constrained in how creatively they can employ their wits. INT is a factor in calculating Action Points and Initiative. If INT is reduced to zero, the character becomes completely mindless.",
+      "value": 0,
+      "increase": 0,
+      "min": 8,
+      "max": 18
+    },
+    "power": {
+      "name": "Power",
+      "shortName": "POW",
+      "description": "POW is a measurement of a character's soul, spirit, inner drive, or capacity for magic. POW governs a character's Magic Points and Luck Points. If a character's POW ever drops to zero, they lose all independent will.",
+      "value": 0,
+      "increase": 0,
+      "min": 3,
+      "max": 18
+    },
+    "charisma": {
+      "name": "Charisma",
+      "shortName": "CHA",
+      "description": "Charisma is a measure of presence and personality and is independent of physical appearance. CHA affects a character's Experience Modifier. If CHA ever falls to zero, the character can no longer socially interact with others, becoming so painfully shy or antisocial they are ignored or even driven away.",
+      "value": 0,
+      "increase": 0,
+      "min": 3,
+      "max": 18
+    }
+  }
+}

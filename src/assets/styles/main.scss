@@ -1,0 +1,17 @@
+.icon-btn {
+  padding: 0;
+  border: none;
+  background: transparent;
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+
+.chars {
+  &__value {
+    min-width: 20px;
+  }
+}

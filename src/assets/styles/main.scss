@@ -11,7 +11,11 @@
 
 
 .chars {
+  &__item {
+    min-height: 48px;
+  }
+
   &__value {
-    min-width: 20px;
+    min-width: 40px;
   }
 }

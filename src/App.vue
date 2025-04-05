@@ -178,10 +178,268 @@ const character = ref({
     movementRate: {
       name: "Movement Rate",
       shortName: "MR",
-      description: "<p>Every creature has a Movement Rate – a number of metres that can be travelled during a specific period of time. Movement is not calculated from Characteristics but is a default value which differs from species to species. The base Movement Rate for humans is 6 metres.</p><p>Gaits faster than Walk apply a multiplier to the Move rating:</p><ul><li><b>Run:</b> Move x3</li><li><b>Sprint:</b> Move x5</li></ul><p>While at a Run or Sprint Gait, characters cannot attempt most proactive actions like attacking or casting spells. Some exceptions include...</p><ul><li>Attacks when using the Charging rules.</li><li>Firing ranged weapons with the Skirmishing trait.</li></ul><p>As a general rule, any allowed actions should be treated as one Grade harder to pull off at a Run, and two Grades harder at a Sprint.</p>",
-      value: 6
+      description:
+        "<p>Every creature has a Movement Rate – a number of metres that can be travelled during a specific period of time. Movement is not calculated from Characteristics but is a default value which differs from species to species. The base Movement Rate for humans is 6 metres.</p><p>Gaits faster than Walk apply a multiplier to the Move rating:</p><ul><li><b>Run:</b> Move x3</li><li><b>Sprint:</b> Move x5</li></ul><p>While at a Run or Sprint Gait, characters cannot attempt most proactive actions like attacking or casting spells. Some exceptions include...</p><ul><li>Attacks when using the Charging rules.</li><li>Firing ranged weapons with the Skirmishing trait.</li></ul><p>As a general rule, any allowed actions should be treated as one Grade harder to pull off at a Run, and two Grades harder at a Sprint.</p>",
+      value: 6,
     },
   },
+  skills: {
+    standard: {
+      athletics: {
+        name: "Athletics",
+        shortName: "athletics",
+        description:
+          "<p><b>Strength + Dexterity</b></p><p>Athletics covers a range of physical activities, including climbing, jumping, throwing, and running. Skills rolls for any of these activities are handled by a single roll against the Athletics skill. See Movement for more information on climbing, jumping, and running.</p>",
+        increases: {},
+        get value() {
+          return (
+            character.value.characteristics.strength.value +
+            character.value.characteristics.dexterity.value
+          );
+        },
+      },
+      boating: {
+        name: "Boating",
+        shortName: "boating",
+        description:
+          "<p><b>Strength + Constitution</b></p><p>The Boating skill covers the operation of small floating craft. on rivers, lakes, and close inshore. Appropriate vessels are generally boats, canoes, or rafts which travel short distances and are unsuited to the rigors of the open sea. Most are propelled using oars, paddles, punts, or simple sails; or can even be towed by animals. Ships with large crews or designed for long, overseas journeys are covered under the Seamanship Professional Skill.</p>",
+        increases: {},
+        get value() {
+          return (
+            character.value.characteristics.strength.value +
+            character.value.characteristics.constitution.value
+          );
+        },
+      },
+      brawn: {
+        name: "Brawn",
+        shortName: "brawn",
+        description:
+          "<p><b>Strength + Size</b></p><p>Brawn is the efficient application of technique when applying raw physical force. The skill covers acts of applied might, including lifting, breaking down doors and contests of strength.</p>",
+        increases: {},
+        get value() {
+          return (
+            character.value.characteristics.strength.value +
+            character.value.characteristics.size.value
+          );
+        },
+      },
+      conceal: {
+        name: "Conceal",
+        shortName: "conceal",
+        description:
+          "<p><b>Dexterity + Power</b></p><p>Conceal is the counterpoint to Stealth, being the concealment of large objects rather than the character themselves. For instance, conceal could be used to hide a chariot behind some rocks, or sweep away the wheel ruts it left so its path cannot be tracked. The skill is versatile in application, anything from hiding a scroll in a library to disguising the presence of a trap or secret passage.</p>",
+        increases: {},
+        get value() {
+          return (
+            character.value.characteristics.dexterity.value +
+            character.value.characteristics.power.value
+          );
+        },
+      },
+      customs: {
+        name: "Customs",
+        shortName: "customs",
+        description:
+          "<p><b>Intelligence x2 +40</b></p><p>Customs represents the character's knowledge of his own community: its social codes, rites, rituals, taboos, and so on. The skill is used when it is essential to accurately interpret or perform any socially important custom or to behave in a particular way.</p>",
+        increases: {},
+        get value() {
+          return character.value.characteristics.intelligence.value * 2 + 40;
+        },
+      },
+      dance: {
+        name: "Dance",
+        shortName: "dance",
+        description:
+          "<p><b>Dexterity + Charisma</b></p><p>Just about every culture uses dance in some way – either as recreation or as part of important rituals. It might be a court dance, a war dance, or a simple set of movements accompanying a prayer or ceremonial chant. The Dance skill measures a character's ability to move rhythmically and accurately (to a reasonable degree) when called upon to do so.</p>",
+        increases: {},
+        get value() {
+          return (
+            character.value.characteristics.dexterity.value +
+            character.value.characteristics.charisma.value
+          );
+        },
+      },
+      deceit: {
+        name: "Deceit",
+        shortName: "deceit",
+        description:
+          "<p><b>Intelligence + Charisma</b></p><p>Deceit covers all instances where a character attempts to mask the truth and offer a deception of some kind: barefaced lying, misleading a guard, or even bluffing (or cheating) during a card game. The skill also covers instances where hiding true emotions or motives is necessary (feigning pleasure when one is bitterly disappointed perhaps, or attempting to seem welcoming and open when the opposite is true). Deceit forms a counterpart to the Insight skill and can be used to oppose Insight rolls when others are attempting to discern either truth or motive.</p>",
+        increases: {},
+        get value() {
+          return (
+            character.value.characteristics.intelligence.value +
+            character.value.characteristics.charisma.value
+          );
+        },
+      },
+      drive: {
+        name: "Drive",
+        shortName: "drive",
+        description:
+          "<p><b>Dexterity + Power</b></p><p>Drive covers the control of wheeled or drawn vehicles, whether by one or more beasts of burden or powered by more esoteric means, such as chariots, sleds, sail carts, or even gasoline cars. A roll is also necessary if the vehicle being driven is drawn or powered by a means different than the driver is used to (horses instead of oxen, or a motor rather than animals for example).</p>",
+        increases: {},
+        get value() {
+          return (
+            character.value.characteristics.dexterity.value +
+            character.value.characteristics.power.value
+          );
+        },
+      },
+      endurance: {
+        name: "Endurance",
+        shortName: "endurance",
+        description:
+          "<p><b>Constitution x2</b></p><p>Endurance is a character's capacity to endure physical stress, pain, and fatigue. It measures the body's ability to deal with potentially damaging or debilitating conditions and is a general gauge of resilience, stamina, and metabolism. Endurance, like its counterpart Willpower, is used in any number of ways, but most specifically to resist the possible effects of injuries, including harmful poisons and disease.</p>",
+        increases: {},
+        get value() {
+          return character.value.characteristics.constitution.value * 2;
+        },
+      },
+      evade: {
+        name: "Evade",
+        shortName: "evade",
+        description: "<p><b>Dexterity x2</b></p><p>Evade is used to escape from observed, impending danger and can be used against Ranged Weapons (by diving for cover, for example), avoiding traps, changing the engagement distance in combat, and generally getting out of the way of a potential physical hazard. It can also be used as a resistance roll for certain types of magic. Using Evade usually leaves the character prone. Those with the Daredevil Combat Style Trait may use Evade to dodge a melee attack without falling prone and, against a ranged attack, they only end up prone if they fail the roll.</p>",
+        increases: {},
+        get value() {
+          return character.value.characteristics.dexterity.value * 2;
+        },
+      },
+      firstAid: {
+        name: "First Aid",
+        shortName: "firstAid",
+        description: "<p><b>Dexterity + Intelligence</b></p><p>The skill of First Aid measures a character's ability to treat minor injuries and stabilise more severe ones. First Aid may be applied only once per specific injury and heals 1d3 points of damage.</p>",
+        increases: {},
+        get value() {
+          return (
+            character.value.characteristics.dexterity.value +
+            character.value.characteristics.intelligence.value
+          );
+        },
+      },
+      influence: {
+        name: "Influence",
+        shortName: "influence",
+        description: "<p><b>Charisma x2</b></p><p>This is a measurement of a character's ability to persuade others, through personal charisma, into a desired way of behaving. It is used in a wide variety of situations; from changing someone's mind, to bribing an official or guard. Influence rolls are typically opposed by Perception, Willpower, or another Influence skill, depending on the circumstances, and are modified by how much a character is trying to influence behavior. Attempting to persuade a close friend to loan you their horse may be relatively easy. Getting a usually incorruptible bureaucrat to accept a bribe is more difficult.</p>",
+        increases: {},
+        get value() {
+          return character.value.characteristics.charisma.value * 2;
+        },
+      },
+      insight: {
+        name: "Insight",
+        shortName: "insight",
+        description: "<p><b>Intelligence + Power</b></p><p>Insight is the ability to read or intuitively define another's verbal and non-verbal behavior (such as body language or the manner of speech) to establish their motives and state of mind. Insight is used to determine whether someone is telling a lie (and it can be opposed by the other person's Deceit skill), or to predict how someone feels about a particular situation. Insight can equally be applied to particular situations as well as other people: is that tavern a haven for trouble? Could the bandits be planning an ambush in the nearby hills?</p>",
+        increases: {},
+        get value() {
+          return (
+            character.value.characteristics.intelligence.value +
+            character.value.characteristics.power.value
+          );
+        },
+      },
+      locale: {
+        name: "Locale",
+        shortName: "locale",
+        description: "<p><b>Intelligence x2</b></p><p>Locale measures a character's understanding of local flora, fauna, terrain, and weather in the area where he or she has spent much of their life, usually within their community. The character knows the common plants, trees, and animals, their properties and behavior: where the best fish can be found; the movements of game creatures; where to find shelter; the likely weather for the season, and the most common regional dangers. In neighboring, yet unfamiliar locations Locale should be made one or more grades harder.</p>",
+        increases: {},
+        get value() {
+          return character.value.characteristics.intelligence.value * 2;
+        }
+      },
+      perception: {
+        name: "Perception",
+        shortName: "perception",
+        description: "<p><b>Intelligence + Power</b></p><p>Perception is used for both passive observation and focused detection; whether hunting for something specific, a general scan of an area, or simple awareness of their surroundings. Specific conditions – darkness, for example – may affect the Difficulty Grade of the skill roll depending on the primary senses being used. Strong scents might make an olfactory Perception roll Easy rather than Standard, whereas trying to eavesdrop on a conversation in a crowded and noisy tavern would make the roll Hard.</p>",
+        increases: {},
+        get value() {
+          return (
+            character.value.characteristics.intelligence.value +
+            character.value.characteristics.power.value
+          );
+        },
+      },
+      ride: {
+        name: "Ride",
+        shortName: "ride",
+        description: "<p><b>Dexterity + Power</b></p><p>Ride covers the ability to control and remain mounted on those creatures that are trained to be ridden. The skill can be applied to a diverse range of beasts, everything from mules to elephants; even flying or swimming creatures such as giant eagles or dolphins. Riding an unfamiliar species is always one Difficulty Grade harder; while riding a species of a different medium (a horse rider riding a dragon, for example) is two grades harder. Wild, untamed creatures cannot be ridden in a constructive manner until they have been broken and trained to be riding beasts.</p>",
+        increases: {},
+        get value() {
+          return (
+            character.value.characteristics.dexterity.value +
+            character.value.characteristics.power.value
+          );
+        },
+      },
+      sing: {
+        name: "Sing",
+        shortName: "sing",
+        description: "<p><b>Power + Charisma</b></p><p>Carrying a tune is covered by Sing, anything from monotonous chants through to complex arias. Singing is an inherent part of most cultures, a prime source of entertainment and perhaps used in its rituals. Important songs might be used for courting, inspiring soldiers before battle, or simply recounting a historical deed. The skill reflects the user's ability to maintain rhythm, keep in key and remember the correct words.</p>",
+        increases: {},
+        get value() {
+          return (
+            character.value.characteristics.power.value +
+            character.value.characteristics.charisma.value
+          );
+        },
+      },
+      stealth: {
+        name: "Stealth",
+        shortName: "stealth",
+        description: "<p><b>Dexterity + Intelligence</b></p><p>Hiding out of plain sight, or moving with minimal sound are covered by the Stealth skill. Cover and conditions, such as darkness or loud background noise, improve the grade of the skill according to the specifics of the environment. Similarly, adverse conditions, such as a lack of cover or a quiet night will decrease the skill's grade. Circumstances also affect the difficulty of the attempt. For instance, a warrior wearing heavy armor can easily conceal themselves behind a wall, provided they stand still or move very slowly, whereas moving quickly might cause their armor to jingle.</p>",
+        increases: {},
+        get value() {
+          return (
+            character.value.characteristics.dexterity.value +
+            character.value.characteristics.intelligence.value
+          );
+        },
+      },
+      swim: {
+        name: "Swim",
+        shortName: "swim",
+        description: "<p><b>Srength + Constitution</b></p><p>Without development, the ability to swim is limited to being able to thrash around and keep one's head above the water for a short time. Higher Swim percentages indicate being able to negotiate deeper and stronger waters, with less risk of drowning. Making a Swim roll thus depends entirely on the conditions. Rough seas, strong currents, white water, and rip tides all reduce the grade of the skill no matter what the character's affinity for water might be. See Movement for more information on swimming, including calculating swim speeds.</p>",
+        increases: {},
+        get value() {
+          return (
+            character.value.characteristics.strength.value +
+            character.value.characteristics.constitution.value
+          );
+        },
+      },
+      unarmed: {
+        name: "Unarmed",
+        shortName: "unarmed",
+        description: "<p><b>Srength + Dexterity</b></p><p>Unarmed is a universal Combat Skill common to all characters, measuring the ability to defend oneself without the aid of weapons. The Unarmed skill covers the brawling and wrestling techniques known by that culture.</p><p>As Unarmed is a Combat Skill its Critical and Fumble effects are covered by the rules for combat, as detailed in the Combat chapter.</p>",
+        increases: {},
+        get value() {
+          return (
+            character.value.characteristics.strength.value +
+            character.value.characteristics.dexterity.value
+          );
+        },
+      },
+      willpower: {
+        name: "Willpower",
+        shortName: "willpower",
+        description: "<p><b>Power x2</b></p><p>Willpower is a measure of a character's ability to concentrate, channel his force of will in a particular direction, or harden his psyche to possible mental shock. It is also a measure of personal resolve. The skill is used in all manner of situations where mental resilience is required, and this includes resisting magic. Although not a measure of sanity it can be used to endure traumatic events that would shake even the sanest, stable mind. Willpower is the mental counterpart to Endurance.</p><p>Again, like Endurance and Evade, Willpower is most often used in Opposed Rolls. When used as a Standard test, a Critical Willpower roll indicates that the character has hardened his mind and spirit to the extent that no further attempts to influence him, or shake his resolve, will work. In the case of resisting magic, a Critical Success means that no further mentally afflicting spells cast by the opponent have any effect on the character for the remainder of that encounter.</p>",
+        increases: {},
+        get value() {
+          return character.value.characteristics.power.value * 2;
+        },
+      },
+    },
+  },
+  languages: {
+    native: {
+      name: "Native Tongue",
+      shortName: "native",
+      description: "<p><b>Intelligence + Charisma + 40</b></p><p>Native Tongue is the ability to speak and read one's own language, the one learned while growing up in one's home culture. Native Tongue measures articulation, eloquence, and the depth of the speaker's vocabulary.</p><p>Unlike other skills, Native Tongue is not rolled against directly. Instead, it is treated as a static representation of overall fluency, limiting the level of conversational interaction. This is described in more detail under the Language skill, but starting characters usually begin play fully fluent in their mother tongue.</p>",
+      get value() {
+        return character.value.characteristics.intelligence.value + character.value.characteristics.charisma.value + 40;
+      },
+    }
+  }
 });
 
 const perks = ref({
@@ -204,13 +462,17 @@ const perks = ref({
   <main>
     <div class="container">
       <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-4 px-4">
           <div class="d-flex justify-content-end mb-2">
             <span class="fw-bold">
               Perk points: {{ perks.characteristics.left }} /
               {{ perks.characteristics.max }}
             </span>
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 px-4">
           <ul class="chars list-unstyled">
             <li
               v-for="char in character.characteristics"
@@ -255,7 +517,7 @@ const perks = ref({
             </li>
           </ul>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 px-4">
           <ul class="chars list-unstyled">
             <li
               v-for="attribute in character.attributes"
@@ -280,7 +542,74 @@ const perks = ref({
             </li>
           </ul>
         </div>
-        <div class="col-lg-4"></div>
+        <div class="col-lg-4 px-4"></div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 px-4">
+          <ul class="chars list-unstyled">
+            <li
+              v-for="standSkill in character.skills.standard"
+              :key="standSkill.shortName"
+              class="chars__item d-flex align-items-center justify-content-between py-2 border-bottom"
+            >
+              <div class="chars__name-wrapper d-flex align-items-center gap-2">
+                <span class="chars__name fw-bold">{{ standSkill.name }}</span>
+                <button
+                  class="icon-btn btn btn-sm p-1"
+                  data-bs-toggle="modal"
+                  :data-bs-target="`#charModal-${standSkill.shortName}`"
+                >
+                  <Icon name="question" />
+                </button>
+              </div>
+              <div class="chars__value-wrapper d-flex align-items-center gap-3">
+                <button
+                  class="btn btn-sm btn-secondary"
+                  type="button"
+                  aria-label="-"
+                >
+                  -
+                </button>
+                <span class="chars__value fw-bold text-center">
+                  {{ standSkill.value }}%
+                </span>
+                <button
+                  class="btn btn-sm btn-secondary"
+                  type="button"
+                  aria-label="+"
+                >
+                  +
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-4 px-4">
+          <ul class="chars list-unstyled">
+            <li
+              v-for="lang in character.languages"
+              :key="lang.shortName"
+              class="chars__item d-flex align-items-center justify-content-between py-2 border-bottom"
+            >
+              <div class="chars__name-wrapper d-flex align-items-center gap-2">
+                <span class="chars__name fw-bold">{{ lang.name }}</span>
+                <button
+                  class="icon-btn btn btn-sm p-1"
+                  data-bs-toggle="modal"
+                  :data-bs-target="`#charModal-${lang.shortName}`"
+                >
+                  <Icon name="question" />
+                </button>
+              </div>
+              <div class="chars__value-wrapper d-flex align-items-center gap-3">
+                <span class="chars__value fw-bold text-center">
+                  {{ lang.value }}%
+                </span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-4 px-4"></div>
       </div>
     </div>
 
@@ -289,13 +618,14 @@ const perks = ref({
       v-for="charModal in {
         ...character.characteristics,
         ...character.attributes,
+        ...character.skills.standard,
+        ...character.languages,
       }"
       :key="`charModal-${charModal.shortName}`"
       :id="`charModal-${charModal.shortName}`"
       class="modal fade"
       tabindex="-1"
       :aria-labelledby="`charModal-${charModal.shortName}`"
-      aria-hidden="true"
     >
       <div class="modal-dialog">
         <div class="modal-content">

@@ -1,3 +1,7 @@
+.footer {
+  box-shadow: 0 -0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
 .icon-btn {
   padding: 0;
   border: none;
@@ -17,5 +21,25 @@
 
   &__value {
     min-width: 40px;
+  }
+}
+
+.hidden {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+@media (min-width: 992px) {
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  }
+
+  .footer {
+    &__error {
+      justify-content: center;
+    }
   }
 }
